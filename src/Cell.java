@@ -6,7 +6,7 @@ public class Cell extends JPanel {
     public Cell(int row, int column) {
         this.row = row;
         this.column = column;
-        custom = Game.ogBoard[column][row] == 0;
+        custom = Util.ogBoard[row][column] == 0;
     }
 
     final int row;
@@ -24,7 +24,7 @@ public class Cell extends JPanel {
     void confirm() {
         if(getComponents().length != 0) {
             confirmed = true;
-            Sudoku.board[row][column] = Integer.parseInt(label().getText());
+            Game.board[row][column] = Integer.parseInt(label().getText());
             label().setFont(new Font("Serif", Font.PLAIN, 28));
             label().setVerticalAlignment(SwingConstants.CENTER);
         }

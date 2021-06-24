@@ -1,28 +1,30 @@
-public class Sudoku {
-    static int[][] emptyBoard = new int[9][9];
-    static boolean empty = false;
-    public static final int[][] testBoard = {{ 0, 2, 0, 0, 0, 9, 8, 4, 0 },
-            { 3, 0, 0, 0, 5, 0, 6, 2, 0 },
-            { 0, 0, 0, 8, 0, 7, 5, 0, 0 },
+import org.jetbrains.annotations.TestOnly;
 
-            { 0, 0, 2, 0, 0, 0, 1, 9, 5 },
-            { 0, 5, 0, 0, 0, 0, 0, 0, 0 },
-            { 4, 0, 9, 0, 0, 1, 0, 0, 0 },
+public class Solver {
+    public static final int[][] testBoard =
+            {{ 8, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 3, 6, 0, 0, 0, 0, 0 },
+            { 0, 7, 0, 0, 9, 0, 2, 0, 0 },
 
-            { 2, 8, 4, 7, 0, 0, 9, 3, 0 },
-            { 7, 1, 0, 6, 0, 0, 2, 8, 0 },
-            { 0, 0, 0, 2, 0, 0, 0, 0, 0 } };
-    static int[][] board = empty ? emptyBoard : testBoard;
+            { 0, 5, 0, 0, 0, 7, 0, 0, 0 },
+            { 0, 0, 0, 0, 4, 5, 7, 0, 0 },
+            { 0, 0, 0, 1, 0, 0, 0, 3, 0 },
+
+            { 0, 0, 1, 0, 0, 0, 0, 6, 8 },
+            { 0, 0, 8, 5, 0, 0, 0, 1, 0 },
+            { 0, 9, 0, 0, 0, 0, 4, 0, 0 } };
+
+    @TestOnly
     public static void main(String[] args) {
-        printBoard();
+        printBoard(Game.board);
         System.out.println("\nSolution:");
-        if(solveBoard(board, 0, 0)) {
-            printBoard();
+        if(solveBoard(Game.board, 0, 0)) {
+            printBoard(Game.board);
         } else {
             System.out.println("No solutions!");
         }
     }
-    public static void printBoard() {
+    public static void printBoard(int[][] board) {
         for(int i = 0; i < board.length; i++) {
             if(i % 3 == 0) System.out.println("-------------");
             for(int j = 0; j < board[i].length; j++) {
